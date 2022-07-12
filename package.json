@@ -30,7 +30,8 @@
     "prestart": "npm run rebuild",
     "start": "node -r source-map-support/register .",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "npm run clean && npm run build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -60,6 +61,7 @@
     "@loopback/testlab": "^5.0.1",
     "@types/node": "^14.18.21",
     "eslint": "^8.17.0",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "nyc": "^15.1.0",
     "source-map-support": "^0.5.21",
