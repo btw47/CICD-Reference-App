@@ -19,15 +19,6 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
-      - run:
-          name: Create lockfile
-          command: npm install
-      - run:
-          name: Audit
-          command: npm audit
-      - run:
-          name: Lint
-          command: npm run lint
       # Checkout the code as the first step.
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
@@ -35,6 +26,15 @@ jobs:
       - node/install-packages:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
+      - run:
+          name: Create lockfile
+          command: npm install --package-lock-only
+      - run:
+          name: Audit
+          command: npm audit
+      - run:
+          name: Lint
+          command: npm run lint
       - run:
           name: Run tests
           command: npm test
