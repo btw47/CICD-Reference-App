@@ -20,8 +20,8 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - run:
-        name: Create lockfile
-        command: npm install --package-lock-only
+          name: Create lockfile
+          command: npm install --package-lock-only
       - run:
           name: Audit
           command: npm audit
