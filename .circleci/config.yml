@@ -7,10 +7,11 @@ orbs:
   # Orbs reduce the amount of configuration required for common tasks.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
   node: circleci/node@4.7
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
+  build_test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
@@ -35,6 +36,20 @@ jobs:
       - run:
           name: Run tests
           command: npm test
+      - run:
+          name: Build app
+          command: npm run build
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+  deploy:
+    executor: heroku/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - heroku/deploy-via-git:
+          force: true
 
 workflows:
   # Below is the definition of your workflow.
@@ -43,6 +58,11 @@ workflows:
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   main:
     jobs:
-      - build-and-test
-      # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
-      # - node/test
+      build_test_deploy:
+        jobs:
+          - build_test
+          - deploy:
+            requires: build_test
+            filters:
+              branches:
+                only: master
