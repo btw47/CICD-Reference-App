@@ -48,12 +48,12 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Build & push Docker image to Heroku
-        command: |
-          sudo curl https://cli-assets.heroku.com/install.sh | sh
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a bw-cicd-test-app web
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a bw-cicd-test-app web
+          name: Build & push Docker image to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a bw-cicd-test-app web
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a bw-cicd-test-app web
 
   # deploy:
   # docker:
