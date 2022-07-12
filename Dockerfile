@@ -1,5 +1,8 @@
 # Check out https://hub.docker.com/_/node to select a new base image
-FROM node:16-slim
+# FROM node:16-slim
+
+# needed to use this when deploying from Apple M1
+FROM --platform=linux/amd64 node:14.17.0-alpine
 
 # Set to a non-root built-in user `node`
 USER node
