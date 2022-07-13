@@ -34,11 +34,3 @@ jobs:
 
       - name: Run tests
         run: npm run test
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag $APP_NAME:$(date +%s)
