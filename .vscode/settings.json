@@ -16,6 +16,8 @@
     "**/.svn": true,
     "**/CVS": true,
     "dist": true,
+    ".nyc_output": true,
+    "node_modules": true
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
