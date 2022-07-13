@@ -1,6 +1,8 @@
 name: Clean Workflow Logs
 
 on:
+  push:
+    branches: ['update-github-actions']
   workflow_dispatch:
     inputs:
       days_old:
