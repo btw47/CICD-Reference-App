@@ -32,6 +32,12 @@ jobs:
         run: npm ci
         # run: npm ci --ignore-scripts
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: npm run
+
   build:
     runs-on: ubuntu-latest
 
