@@ -21,10 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # TO DO : reuse existing workflow
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{ secrets.HEROKU_APP_NAME }}:$(date +%s)
-
       - name: Heroku container:login
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

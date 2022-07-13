@@ -1,8 +1,6 @@
 name: CI - Production
 
 on:
-  push:
-    branches: ['master']
   pull_request:
     branches: ['master']
 
@@ -15,13 +13,4 @@ jobs:
     with:
       environment: Production
     secrets:
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
-  # TO DO : move to different workflow
-  deploy:
-    uses: ./.github/workflows/deploy.yml
-    with:
-      environment: Production
-    secrets:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
