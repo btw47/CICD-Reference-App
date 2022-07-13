@@ -18,17 +18,17 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag ${{ inputs.app_name }}:$(date +%s)
 
-      - name: Authenticate with Heroku Container registry
+      - name: Heroku container:login
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
-      - name: heroku:push
+      - name: Heroku container:push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:push -a ${{ inputs.app_name }} web
 
-      - name: heroku:release
+      - name: Heroku container:release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:release -a ${{ inputs.app_name }} web
