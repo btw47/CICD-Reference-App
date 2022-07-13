@@ -1,11 +1,6 @@
 name: CI
 
-on:
-  workflow_call:
-    inputs:
-      app_name:
-        required: true
-        type: string
+on: workflow_call
 
 jobs:
   lint_test:
