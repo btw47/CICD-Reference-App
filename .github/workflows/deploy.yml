@@ -11,6 +11,8 @@ jobs:
   heroku:
     runs-on: ubuntu-latest
 
+    environment: Production
+
     steps:
       - uses: actions/checkout@v3
 
@@ -20,7 +22,6 @@ jobs:
 
       - name: Heroku container:login
         env:
-          environment: Production
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
