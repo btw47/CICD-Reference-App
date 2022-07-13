@@ -1,0 +1,34 @@
+name: Deploy app
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+
+jobs:
+  heroku:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # TO DO : reuse existing workflow
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag ${{ inputs.app_name }}:$(date +%s)
+
+      - name: Authenticate with Heroku Container registry
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
+
+      - name: heroku:push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a ${{ inputs.app_name }} web
+
+      - name: heroku:release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a ${{ inputs.app_name }} web

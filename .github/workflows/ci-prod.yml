@@ -14,3 +14,8 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       app_name: cicd-test-app
+
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      app_name: cicd-test-app
