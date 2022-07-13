@@ -38,4 +38,4 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      app_name: cicd-test-app
+      app_name: ${{ env.APP_NAME }}
