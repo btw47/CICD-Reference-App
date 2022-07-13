@@ -12,9 +12,9 @@ jobs:
 
   build:
     uses: ./.github/workflows/build.yml
-    with:
-      # TO DO : pull app name from secret?
-      app_name: cicd-test-app
+    environment: Production
+    secrets:
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
   # TO DO : move to different workflow
   deploy:
