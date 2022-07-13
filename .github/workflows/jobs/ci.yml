@@ -1,11 +1,11 @@
 name: CI
 
 on:
-  push:
-    branches: ['github-actions']
-#     branches: ['master']
-#             pull_request:
-#     branches: ['master']
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
 
 jobs:
   lint_test:
@@ -35,6 +35,6 @@ jobs:
         run: npm run test
 
   build:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/jobs/build.yml
     with:
-      app_name: cicd-test-app
+      app_name: ${{ inputs.app_name }}
