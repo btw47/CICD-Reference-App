@@ -3,25 +3,27 @@ name: Deploy app
 on:
   workflow_call:
     inputs:
-      heroku_app_name:
-        required: true
+      environment:
         type: string
+        required: true
     secrets:
       HEROKU_API_KEY:
+        required: true
+      HEROKU_APP_NAME:
         required: true
 
 jobs:
   heroku:
     runs-on: ubuntu-latest
 
-    environment: Production
+    environment: ${{ inputs.environment }}
 
     steps:
       - uses: actions/checkout@v3
 
       # TO DO : reuse existing workflow
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ${{ inputs.heroku_app_name }}:$(date +%s)
+        run: docker build . --file Dockerfile --tag ${{ secrets.HEROKU_APP_NAME }}:$(date +%s)
 
       - name: Heroku container:login
         env:
@@ -31,9 +33,9 @@ jobs:
       - name: Heroku container:push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a ${{ inputs.heroku_app_name }} web
+        run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
 
       - name: Heroku container:release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a ${{ inputs.heroku_app_name }} web
+        run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
