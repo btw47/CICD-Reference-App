@@ -20,8 +20,7 @@ jobs:
 
       - name: Heroku container:login
         env:
-          HEROKU_API_KEY: 66c540c1-7ff0-45e4-84b2-5c026c1d5801
-          # HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
       - name: Heroku container:push
