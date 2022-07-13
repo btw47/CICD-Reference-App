@@ -34,10 +34,10 @@ jobs:
           name: Lint
           command: npm run lint
       - run:
-          name: Run tests
+          name: Test
           command: npm test
       - run:
-          name: Build app
+          name: Build
           command: npm run build
       - persist_to_workspace:
           root: ~/project
