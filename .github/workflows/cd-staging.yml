@@ -12,6 +12,8 @@ jobs:
     secrets:
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
+  # TO DO : refresh stage db with data matching current production
+
   deploy:
     needs: ci
     uses: ./.github/workflows/cd.yml
