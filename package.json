@@ -20,7 +20,6 @@
     "prettier": "lb-prettier --write",
     "pretest": "npm run rebuild",
     "test": "nyc lb-mocha --allow-console-logs \"dist/__tests__\"",
-    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "docker:build": "docker build -t cicd-test-app .",
     "docker:run": "docker run -p 3000:3000 -d cicd-test-app",
     "premigrate": "npm run build",

@@ -1,0 +1,13 @@
+name: CI - Staging
+
+on:
+  pull_request:
+    branches: ['staging']
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    with:
+      environment: Staging
+    secrets:
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}

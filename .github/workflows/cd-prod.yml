@@ -1,0 +1,22 @@
+name: CD - Production
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    with:
+      environment: Production
+    secrets:
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
+  deploy:
+    needs: ci
+    uses: ./.github/workflows/cd.yml
+    with:
+      environment: Production
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
