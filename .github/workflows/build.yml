@@ -9,7 +9,6 @@ on:
     secrets:
       HEROKU_APP_NAME:
         required: true
-        type: string
 
 jobs:
   docker_image:
