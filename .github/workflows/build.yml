@@ -14,7 +14,9 @@ on:
 jobs:
   docker_image:
     runs-on: ubuntu-latest
+
     environment: ${{ inputs.environment }}
+
     steps:
       - uses: actions/checkout@v3
 

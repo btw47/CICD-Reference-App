@@ -12,7 +12,8 @@ jobs:
 
   build:
     uses: ./.github/workflows/build.yml
-    environment: Production
+    with:
+      environment: Production
     secrets:
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 
