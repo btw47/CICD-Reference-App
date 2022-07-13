@@ -7,9 +7,6 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/ci.yml
-
-  build:
-    uses: ./.github/workflows/build.yml
     with:
       environment: Production
     secrets:
