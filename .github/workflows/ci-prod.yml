@@ -13,8 +13,10 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
+      # TO DO : pull app name from secret?
       app_name: cicd-test-app
 
+  # TO DO : only run deployment if ci and build succeed
   deploy:
     uses: ./.github/workflows/deploy.yml
     with:
