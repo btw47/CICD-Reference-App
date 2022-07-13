@@ -33,8 +33,3 @@ jobs:
 
       - name: Run tests
         run: npm run test
-
-  build:
-    uses: ./.github/workflows/build.yml
-    with:
-      app_name: ${{ inputs.app_name }}
