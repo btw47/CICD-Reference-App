@@ -35,7 +35,7 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Build
-        uses: ./.github/workflows/build.yml
-        with:
-          app_name: $APP_NAME
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      app_name: $APP_NAME
