@@ -1,4 +1,4 @@
-name: Deploy app
+name: CD
 
 on:
   workflow_call:
