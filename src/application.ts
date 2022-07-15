@@ -37,7 +37,7 @@ export class CicdTestAppApplication extends BootMixin(
       controllers: {
         // Customize ControllerBooter Conventions here
         dirs: ['controllers'],
-        extensions: ['.controller.js'],
+        extensions: ['.controller.js', '.controller.ts'],
         nested: true,
       },
     };
