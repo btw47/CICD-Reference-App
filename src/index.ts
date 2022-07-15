@@ -1,10 +1,10 @@
 /* istanbul ignore file*/
-import {ApplicationConfig, CicdTestAppApplication} from './application';
+import {ApplicationConfig, CicdReferenceAppApplication} from './application';
 
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
-  const app = new CicdTestAppApplication(options);
+  const app = new CicdReferenceAppApplication(options);
   await app.boot();
   await app.start();
 

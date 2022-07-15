@@ -1,11 +1,11 @@
 /* istanbul ignore file*/
-import {CicdTestAppApplication} from './application';
+import {CicdReferenceAppApplication} from './application';
 
 export async function migrate(args: string[]) {
   const existingSchema = args.includes('--rebuild') ? 'drop' : 'alter';
   console.log('Migrating schemas (%s existing schema)', existingSchema);
 
-  const app = new CicdTestAppApplication();
+  const app = new CicdReferenceAppApplication();
   await app.boot();
   await app.migrateSchema({existingSchema});
 

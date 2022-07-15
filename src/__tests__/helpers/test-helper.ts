@@ -3,7 +3,7 @@ import {
   createRestAppClient,
   givenHttpServerConfig,
 } from '@loopback/testlab';
-import {CicdTestAppApplication} from '../..';
+import {CicdReferenceAppApplication} from '../..';
 
 export async function setupApplication(): Promise<AppWithClient> {
   const restConfig = givenHttpServerConfig({
@@ -14,7 +14,7 @@ export async function setupApplication(): Promise<AppWithClient> {
     // port: +process.env.PORT,
   });
 
-  const app = new CicdTestAppApplication({
+  const app = new CicdReferenceAppApplication({
     rest: restConfig,
   });
 
@@ -27,6 +27,6 @@ export async function setupApplication(): Promise<AppWithClient> {
 }
 
 export interface AppWithClient {
-  app: CicdTestAppApplication;
+  app: CicdReferenceAppApplication;
   client: Client;
 }

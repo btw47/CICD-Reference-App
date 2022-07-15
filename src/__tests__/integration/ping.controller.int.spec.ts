@@ -1,9 +1,9 @@
 import {Client} from '@loopback/testlab';
-import {CicdTestAppApplication} from '../../application';
+import {CicdReferenceAppApplication} from '../../application';
 import {setupApplication} from '../helpers/test-helper';
 
 describe('PingController integration', () => {
-  let app: CicdTestAppApplication;
+  let app: CicdReferenceAppApplication;
   let client: Client;
 
   beforeEach(async () => {

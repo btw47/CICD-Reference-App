@@ -1,5 +1,5 @@
 {
-  "name": "cicd-test-app",
+  "name": "cicd-reference-app",
   "version": "0.0.1",
   "description": "Test app for potential CICD process",
   "keywords": [
@@ -20,8 +20,8 @@
     "prettier": "lb-prettier --write",
     "pretest": "npm run rebuild",
     "test": "jest",
-    "docker:build": "docker build -t cicd-test-app .",
-    "docker:run": "docker run -p 3000:3000 -d cicd-test-app",
+    "docker:build": "docker build -t cicd-reference-app .",
+    "docker:run": "docker run -p 3000:3000 -d cicd-reference-app",
     "premigrate": "npm run build",
     "migrate": "node ./dist/migrate",
     "preopenapi-spec": "npm run build",

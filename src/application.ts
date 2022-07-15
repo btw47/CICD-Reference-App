@@ -13,7 +13,7 @@ import {MySequence} from './sequence';
 
 export {ApplicationConfig};
 
-export class CicdTestAppApplication extends BootMixin(
+export class CicdReferenceAppApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
 ) {
   constructor(options: ApplicationConfig = {}) {
