@@ -6,6 +6,7 @@ module.exports = {
     '<rootDir>/src/migrate.ts',
     '<rootDir>/src/openapi-spec.ts',
     '<rootDir>/src/datasources',
+    '<rootDir>/src/scripts',
     'index.ts',
   ],
   modulePathIgnorePatterns: [
